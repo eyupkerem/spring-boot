@@ -22,14 +22,22 @@ public class CruddemoApplication {
 		return runner ->{
 			// createStudent(studentDAO);
 
-			// readStudent(studentDAO);
+			 readStudent(studentDAO);
 
 			// queryForStudent(studentDAO);
 
 			// findByLastname(studentDAO);
 
-			updateStudent(studentDAO);
+			// updateStudent(studentDAO);
+
+			// deleteStudent(studentDAO);
 		};
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		int id=1;
+		System.out.println("Following student is deleting..... with id : "+ id);
+		studentDAO.delete(1);
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
@@ -65,7 +73,7 @@ public class CruddemoApplication {
 	}
 
 	private void readStudent(StudentDAO studentDAO) {
-		Student findedStudent = studentDAO.findById(1);
+		Student findedStudent = studentDAO.findById(2);
 		System.out.println(findedStudent.toString());
 	}
 
@@ -79,7 +87,7 @@ public class CruddemoApplication {
 
 		System.out.println(student.getId());
 		System.out.println(student.toString());
-
 	}
+
 
 }
