@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>luv2code Company Home Page</title>
@@ -7,15 +7,46 @@
 
 <body>
 
-<h2>luv2code Company Home Page</h2>
+<h2>Company Home Page</h2>
 <hr>
 <p>
-    Welcome to the luv2code company home page!
+    Welcome to the company home page!
 </p>
+
+<hr>
+
+<p>
+    User: <span sec:authentication="name"></span>
+    <br><br>
+    Role(s): <span sec:authentication="principal.authorities"></span>
+</p>
+
+<br>
+
+<div sec:authorize="hasRole('MANAGER')">
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting</a>
+        (Only for Manager peers)
+    </p>
+</div>
+
+
+<div sec:authorize="hasRole('ADMIN')">
+<p>
+    <a th:href="@{/systems}"> IT Systems Meeting </a>
+    (Only for admins)
+</p>
+
+
+</div>
+
+<br>
+
+<hr>
+
 
 <!-- Add a logout button -->
 <form action="#" th:action="@{/logout}" method="POST">
-
     <input type="submit" value="Logout" />
 </form>
 
