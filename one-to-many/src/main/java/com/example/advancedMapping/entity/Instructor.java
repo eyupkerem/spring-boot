@@ -35,6 +35,7 @@ public class Instructor {
     private InstructorDetail instructorDetail;
 
     @OneToMany(mappedBy = "instructor" ,
+            fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH , CascadeType.MERGE ,
             CascadeType.PERSIST ,CascadeType.REFRESH})
     @ToString.Exclude

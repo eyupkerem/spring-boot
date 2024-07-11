@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -31,11 +32,18 @@ public class AdvancedMappingApplication {
 
 		//	deleteInstructorDetail(appDAO);
 
-			createInstructorWithCourses(appDAO);
+		//	createInstructorWithCourses(appDAO);
+
+		//	findInstructorWithCourses(appDAO);
+
+		//	findCoursesForInstructor(appDAO);
+
+		//	findInstructorWithCoursesJoinFetch(appDAO);
+
+		//	updateInstructor(appDAO);
 
 		};
 	}
-
 
 /*
 	public void createInstructor(AppDAO appDAO){
@@ -70,17 +78,14 @@ public class AdvancedMappingApplication {
 
 	}
 	 */
-
-	/*
+    /*
 	private void deleteInstructor(AppDAO appDAO) {
 
-		int id=3;
+		int id=1;
 
-		appDAO.deleteById(3);
-
+		appDAO.deleteInstructorById(id);
 	}
-	 */
-
+     */
 	/*
 	private void findInstructorDetail(AppDAO appDAO) {
 		int id=3;
@@ -103,6 +108,8 @@ public class AdvancedMappingApplication {
 	}
 	 */
 
+
+	/*
 	private void createInstructorWithCourses(AppDAO appDAO) {
 
 		Instructor instructor = new Instructor("Rick", "Bracco","Rick@bracco.com");
@@ -122,9 +129,71 @@ public class AdvancedMappingApplication {
 
 
 		System.out.println("Done");
+	}
 
+	 */
+
+	/*
+	private void findInstructorWithCourses(AppDAO appDAO) {
+		int theId = 1;
+
+		System.out.println("Instructor id : " + theId);
+
+		Instructor tempInstructor =appDAO.findById(theId);
+
+		System.out.println("Instructor  : " + tempInstructor);
+
+		System.out.println("Courses : " + tempInstructor.getCourses());
 
 	}
+	 */
+/*
+	private void findCoursesForInstructor(AppDAO appDAO) {
+		int theId = 1;
+
+		System.out.println("Instructor id : " + theId);
+
+		Instructor tempInstructor =appDAO.findById(theId);
+
+		System.out.println("Instructor : " + tempInstructor.getFirstName() + " " + tempInstructor.getLastName());
+
+		List<Course> courses = appDAO.findCoursesByInstructorId(theId);
+
+		for(Course course: courses){
+			System.out.println(course + "\n");
+		}
+
+	}
+ */
+
+	/*
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+		int theId=1;
+
+		Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
+
+		System.out.println("Instructor : " + tempInstructor);
+
+		System.out.println("Instructor's Courses : " + tempInstructor.getCourses());
+	}
+	 */
+
+	private void updateInstructor(AppDAO appDAO){
+
+		int id=1;
+
+		Instructor tempInstructor = appDAO.findById(id);
+
+		tempInstructor.setLastName("Test");
+
+		appDAO.update(tempInstructor);
+
+		System.out.println(tempInstructor.toString() );
+
+	}
+
+
+
 
 
 
