@@ -13,4 +13,9 @@ public class MembershipDaoImpl implements MembershipDao {
 
         return true;
     }
+
+    @Override
+    public void goToSleep() {
+        System.out.println("I am going to sleep.....");
+    }
 }
