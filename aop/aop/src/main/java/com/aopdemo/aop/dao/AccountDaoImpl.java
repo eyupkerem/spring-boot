@@ -27,8 +27,17 @@ public class AccountDaoImpl implements AccountDao{
     @Override
     public List<Account> findAccounts() {
 
-        List<Account> myAccounts = new ArrayList<>();
+        return findAccounts(false);
+    }
 
+    @Override
+    public List<Account> findAccounts(boolean tripWare) {
+
+        if (tripWare){
+            throw new RuntimeException("tripWare working");
+        }
+
+        List<Account> myAccounts = new ArrayList<>();
 
         Account acc1 = new Account("Chaby" , "Platinum");
         Account acc2 = new Account("John" , "Gold");
@@ -40,6 +49,7 @@ public class AccountDaoImpl implements AccountDao{
 
         return myAccounts;
     }
+
 
     public String getName() {
         System.out.println(getClass() + " : in getName()");

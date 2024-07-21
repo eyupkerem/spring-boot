@@ -19,5 +19,6 @@ public interface AccountDao {
     public void setServiseCode(String serviseCode);
 
     public List<Account> findAccounts();
+    public List<Account> findAccounts(boolean tripWare);
 
 }
